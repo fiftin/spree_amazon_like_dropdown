@@ -1,4 +1,4 @@
-class AddBackgroundToSpreeTaxons < ActiveRecord::Migration
+class AddBackgroundToSpreeTaxons < SpreeExtension::Migration[5.1]
   def change
     add_column :spree_taxons, :background_file_name, :string
     add_column :spree_taxons, :background_content_type, :string

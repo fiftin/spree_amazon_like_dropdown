@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_amazon_like_dropdown'
-  s.version     = '0.1.0'
+  s.version     = '0.2.2'
   s.summary     = 'Provides dropdown taxonomies menu like Amazon\'s.'
   #s.description = 'TODO: Add (optional) gem description here'
   s.required_ruby_version = '>= 2.0.0'
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 3.0.0'
+  s.add_dependency 'spree_core', '~> 3.7.0.rc1'
 
   s.add_development_dependency 'capybara', '~> 2.4'
   s.add_development_dependency 'coffee-rails'

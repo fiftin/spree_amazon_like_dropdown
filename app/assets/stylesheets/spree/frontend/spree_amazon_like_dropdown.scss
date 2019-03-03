@@ -55,7 +55,7 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 
 .taxonomies-taxon-link {
   display: block;
-  padding: 8px 15px;
+  padding: 8px 20px;
 }
 
 .taxonomies-taxon-link:first-child {
@@ -197,7 +197,7 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 .taxonomies-taxon-background {
   position: absolute;
   z-index:-1;
-  max-width: 598px;
+  max-height: 100%;
   right: 0;
   bottom: 0;
   border-bottom-right-radius: 4px;

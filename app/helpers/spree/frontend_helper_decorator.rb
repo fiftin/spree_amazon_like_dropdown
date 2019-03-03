@@ -2,9 +2,12 @@ Spree::FrontendHelper.module_eval do
 
   def taxon_popup_children(root_taxon, always)
     return '' if root_taxon.leaf?
-    taxons = root_taxon.children.map do |taxon|
+    taxons = root_taxon.children.map do |taxon|     
       desc = taxon.description.nil? || taxon.description.empty? ? '' : "<span class=\"taxonomies-subtaxon-description\">#{taxon.description}</span>"
-      link = link_to("<span class=\"taxonomies-subtaxon-name\">#{taxon.name}</span>#{desc}".html_safe, seo_url(taxon), class: 'taxonomies-subtaxon-link')
+        #badge = "<span class='badge badge-light'>#{Spree::Product.in_taxon(taxon).count}</span>"
+        #link = link_to("<span class=\"taxonomies-subtaxon-name\">#{taxon.name}</span> #{badge}#{desc}".html_safe, seo_url(taxon), class: 'taxonomies-subtaxon-link')
+  
+        link = link_to("<span class=\"taxonomies-subtaxon-name\">#{taxon.name}</span>#{desc}".html_safe, seo_url(taxon), class: 'taxonomies-subtaxon-link')
       "<div class=\"taxonomies-subtaxon\">#{link}</div>"
     end
     return '' if taxons.empty? && !always
@@ -31,9 +34,13 @@ Spree::FrontendHelper.module_eval do
       else
         chevron = ''
       end
-
-      link = link_to("#{offset}#{taxon.name}#{chevron}".html_safe, seo_url(taxon), class: 'taxonomies-taxon-link')
-      "<li class=\"#{css_class} taxonomies-taxon\">#{link}#{popup_children}</li>"
+       if ENV['http_BADGES'].nil?
+        badge = "<span class='badge badge-light'>#{Spree::Product.in_taxon(taxon).count}</span>"
+        link = link_to("#{offset}#{taxon.name} #{badge}#{chevron}".html_safe, seo_url(taxon), class: 'taxonomies-taxon-link')
+       else
+         link = link_to("#{offset}#{taxon.name} #{chevron}".html_safe, seo_url(taxon), class: 'taxonomies-taxon-link')
+       end
+       "<li class=\"#{css_class} taxonomies-taxon\">#{link}#{popup_children}</li>"
 
     end
 
